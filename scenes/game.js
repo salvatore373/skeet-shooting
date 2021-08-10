@@ -97,7 +97,7 @@ function shootBullet(target) {
         }
     ]);
 
-    play('explosion');
+    if(!muted) play('explosion');
 }
 
 // Shoot the skeet from the cannon in a random direction
@@ -128,6 +128,8 @@ function buildGame() {
         }),
         layer('bg'),
     ]);
+    
+    buildUi();
 
     // Display the gun
     let gun = add([
@@ -193,7 +195,7 @@ function buildGame() {
     // Add the shot effect on mouse click
     mouseClick(() => {
         if(paused) return;
-        var currMousePos = mousePos();
+        let currMousePos = mousePos();
         // console.log('mousePos\nx: ', currMousePos.x, '\ny: ', currMousePos.y); // DEBUG
         shootBullet(currMousePos);
     });
@@ -215,10 +217,8 @@ function buildGame() {
         // Increase score
         playerScore++;
 
-        play('hit');
+        if(!muted) play('hit');
     });
-
-    buildUi();
 
     shootSkeet();
 }

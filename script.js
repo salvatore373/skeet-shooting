@@ -106,4 +106,5 @@ function main() {
 }
 
 scene(MAIN_SCENE_ID, main);
-go(MAIN_SCENE_ID);
+// DEBUG go(MAIN_SCENE_ID);
+go('game'); // DEBUG

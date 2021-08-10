@@ -62,7 +62,7 @@ function buildGameOver(score) {
     }
 
     add([
-        text('Press the space bar to play again'),
+        text('Press the space bar to play again', SMALL_TEXT_SIZE),
         origin('bot'),
         pos(width()/2, height()-MARGIN_SIZE),
     ]);
@@ -70,7 +70,7 @@ function buildGameOver(score) {
         go(GAME_SCENE_ID);
     });
 
-    play('jingle');
+    if(!muted) play('jingle');
 }
 
 scene(GAME_OVER_SCENE_ID, buildGameOver);
