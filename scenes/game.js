@@ -85,7 +85,6 @@ function shootBullet(target) {
         sprite('bullet', {
             width: width() / 80,
         }),
-        // scale(0.1), // DEBUG
         origin('botleft'),
         pos(0, height()),
         solid(),
@@ -108,7 +107,6 @@ function shootSkeet() {
             frame: 0
         }),
         pos(BG_CANNON_X, BG_CANNON_Y),
-        // scale(0.05), // DEBUG
         solid(),
         'skeet',
         layer('game')
@@ -128,7 +126,7 @@ function buildGame() {
         }),
         layer('bg'),
     ]);
-    
+
     buildUi();
 
     // Display the gun
@@ -136,7 +134,6 @@ function buildGame() {
         layer('gun'),
     ]);
     gun.on('draw', () => {
-        console.log('angle: ' +0.9 - calcGunRotAngle(mousePos()));
         drawSprite('gun', {
             height: height() / 3,
             origin: 'botleft',
@@ -196,7 +193,6 @@ function buildGame() {
     mouseClick(() => {
         if(paused) return;
         let currMousePos = mousePos();
-        // console.log('mousePos\nx: ', currMousePos.x, '\ny: ', currMousePos.y); // DEBUG
         shootBullet(currMousePos);
     });
     action("bullet", (bull) => {

@@ -52,7 +52,6 @@ function buildGameOver(score) {
     ]);
 
     let goalData = getGoalData(score);
-    console.log(score);
     if (goalData) {
         add([
             text('You achieved: ' + goalData.eventName.toUpperCase(), MEDIUM_TEXT_SIZE),

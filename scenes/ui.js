@@ -176,21 +176,6 @@ function buildGameBtn(spriteId, topRightPos, onClick) {
     });
 }
 
-function buildPlaybackCtrl() {
-    let btn = add([
-        sprite('pause', {
-            width: 10,
-        }),
-        pos(width() - UI_CONT_MARGIN, UI_CONT_MARGIN),
-        origin('topright'),
-        layer('ui'),
-    ]);
-    btn.clicks(() => {
-        paused = !paused;
-        btn.changeSprite(paused ? 'play' : 'pause');
-    });
-}
-
 // Builds the UI rectangle showing information about the game
 function buildUi() {
     playerScore = 0;
