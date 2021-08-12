@@ -22,6 +22,47 @@ const GAME_OVER_SCENE_ID = 'game_over';
 
 loadSound('jingle', './sounds/jingle.mp3');
 
+
+function buildBigButton(text, centerPosition, assocKey, onClick)
+{
+    // Display the play button
+    let rectExt = add([
+        rect(2 * BTN_WIDTH, BTN_HEIGHT),
+        pos(centerPosition),
+        origin('center'),
+    ]);
+    let rectInt = add([
+        rect(2 * BTN_WIDTH - BTN_BORDER, BTN_HEIGHT - BTN_BORDER),
+        pos(centerPosition),
+        origin('center'),
+        color(...CLEAR_COLOR)
+    ]);
+    let rectText = add([
+    ]);
+    rectText.on('draw', () => {
+        drawText(text, {
+            size: rectExt.isHovered() ? BTN_TEXT_HOVER : BTN_TEXT,
+            pos: centerPosition,
+            origin: 'center',
+        });
+    });
+    rectExt.action(() => {
+        if(rectExt.isHovered()) {
+            rectExt.width = 2 * BTN_WIDTH_HOVER;
+            rectExt.height = BTN_HEIGHT_HOVER;
+            rectInt.width = 2 * BTN_WIDTH_HOVER - BTN_BORDER;
+            rectInt.height = BTN_HEIGHT_HOVER - BTN_BORDER;
+        } else {
+            rectExt.width = 2 * BTN_WIDTH;
+            rectExt.height = BTN_HEIGHT;
+            rectInt.width = 2 * BTN_WIDTH - BTN_BORDER;
+            rectInt.height = BTN_HEIGHT - BTN_BORDER;
+        }
+    });
+    rectExt.clicks(onClick);
+    keyPress(assocKey, onClick);
+}
+
 function getGoalData(score) {
     if (score > WORLD_REC_SCORE) {
         return new GoalData(WORLD_REC_SCORE, 'WORLD RECORD', 'world_rec');
@@ -60,14 +101,20 @@ function buildGameOver(score) {
         ]);
     }
 
+    buildBigButton(
+        'PLAY AGAIN',
+        vec2(width()/2, height() - SMALL_TEXT_SIZE - 4*MARGIN_SIZE),
+        'space',
+        () => {
+            go(GAME_SCENE_ID);
+        },
+        true,
+    )
     add([
         text('Press the space bar to play again', SMALL_TEXT_SIZE),
         origin('bot'),
         pos(width()/2, height()-MARGIN_SIZE),
     ]);
-    keyPress('space', () => {
-        go(GAME_SCENE_ID);
-    });
 
     if(!muted) play('jingle');
 }
