@@ -1,5 +1,5 @@
 # Skeet shooting
-**Among the "_Best Winners_" of the [1729.com Kaboom Challenge](https://replit.com/@Salvatore373/Skeet-Shooting?v=1)**
+**Among the "_Best Winners_" of the [1729.com Kaboom Challenge](https://1729.com/replit-kaboom/)**
 
 ## Let's Play!
 Play from the [Repl.it Apps Page](https://replit.com/@Salvatore373/Skeet-Shooting?v=1)
